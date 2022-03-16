@@ -17,6 +17,10 @@ elif number == 10:
     print("What are 10 things we can always count on?")
     sleep(3)
     print("Our fingers!")
+elif number == 36:
+    print("A Shepherd has 36 sheep, but why did he count 40 of them?")
+    sleep(3)
+    print("Because he wanted to round them up!")
 else:
     answer = input("Still thinking of a joke for that number!")
           
