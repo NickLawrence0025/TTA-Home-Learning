@@ -18,7 +18,7 @@ elif number == 10:
     sleep(3)
     print("Our fingers!")
 else:
-    answer = input("Still thinking of a joke for that number")
+    answer = input("Still thinking of a joke for that number!")
           
 
     
