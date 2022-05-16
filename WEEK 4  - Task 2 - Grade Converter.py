@@ -1,4 +1,4 @@
-def grade_converter(score):
+def mark_grade(score):
     if score >= 90:
         return "A"
     elif score>= 80:
@@ -13,7 +13,7 @@ def grade_converter(score):
 grades = ["A","B","C","D","F"]
 
 score = int(input("What is your score? "))
-letter = grade_converter(score)
+letter = mark_grade(score)
 print("You achieved a grade " + str(letter))
 predicted_grade = input("What is your predicted grade? ")
 
