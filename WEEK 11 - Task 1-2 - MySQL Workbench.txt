@@ -1,0 +1,75 @@
+#Obtain all information on students not attending course 1
+
+select*
+from student
+where CourseID <> 1;
+
+select *
+from course;
+
+#Obtain the first name, surname and Date of Birth for the student with the email address: val.bolger@example.com
+
+select Forenames, Surname, DateOfBirth
+from student
+where EmailAddress = 'val.bolger@example.com';
+
+
+#Obtain a list of the modules which have the subject Economics 
+
+select ModuleName
+from module
+where CourseID = 1;
+
+#Obtain a list of class numbers and their dates which are scheduled before 21st September 2020
+
+select classID, CDate
+from schedule
+where CDate < '2020-09-21';
+
+#Insert a record for a new course named Deep-Space Radar Telemetry
+
+insert into course (CourseID,CourseName)
+values (15, 'Advanced Deep Space Radar Telemetry');
+
+select *
+from course;
+
+#Insert modules into course 
+
+insert into module(ModuleName,Subject,Level,CourseId,Credits)
+values
+('String Theory','Physics',6,15,20),
+('Exotic Matter','Physics',6,15,20),
+('Harnessing the Einstein-Rosen Bridge','Physics',6,15,20),
+('Supercollision and minature Black Holes','Physics',6,15,20);
+
+select *
+from module;
+
+#Assign module to class and lecturerid
+
+insert into class(lecturerid, moduleid)
+values (6,117),(6,118),(6,119),(6,120);
+
+#add students to class
+insert into student(Forenames, Surname, DateOfBirth, CourseId)
+values
+('Nick','Fury','1974-1-06',15),
+('John','Carter','1873-04-11',15),
+('Paul','Atreides','1980-01-03',15);
+
+#add email addresses to new student record
+update student
+set EmailAddress = 'n.fury@example.com'
+where StudentID = 605;
+
+update student
+set EmailAddress = 'j.carter@example.com'
+where StudentID = 606;
+
+update student
+set EmailAddress = 'p.atreides@example.com'
+where StudentID = 606;
+
+
+
