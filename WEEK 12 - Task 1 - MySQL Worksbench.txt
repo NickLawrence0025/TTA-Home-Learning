@@ -1,0 +1,45 @@
+# Number of students enrolled overall
+
+select count(*) as 'Overall Student Count'
+from student;
+
+# Total Fees paid
+select sum(fees.FullTimeFee) as 'Total Fees Paid'
+from fees;
+
+
+#Lowest and highest part time/full time fee with overall range
+select min(PartTimeFee) as 'Lowest P/T Fee' ,max(PartTimeFee) as 'Highest P/T Fee',
+ min(FullTimeFee) as 'Lowest F/T Fee', max(FullTimeFee) as 'Highest F/T Fee', 
+ (max(FullTimeFee) - min(FullTimeFee)) as 'Fee Range'
+from fees;
+
+#Average Part Time Fee 
+select avg(PartTimeFee) as 'Average Part Time Fee'
+from fees;
+
+#Courses with scholarship discount price, percentage value of discount - in descending order
+select fees.CourseID, CourseName,  FullTimeFee -scholarshipdiscount as 'with scholarship discount',
+(ScholarshipDiscount / FullTimeFee) * 100 as '% Discount'
+from uni.fees
+left join course
+on course.CourseID = fees.CourseID
+order by 4 desc;
+
+#Lowest full time fee course 
+select CourseID as 'Lowest Full Time Fee'
+from fees
+where FullTimeFee = (select min(FullTimeFee) from uni.fees);
+
+# Discount fee for all Full time courses
+select course.courseid, CourseName, fulltimefee-scholarshipdiscount as 'Discount Fee £'
+from uni.fees
+left join course
+on course.CourseID = fees.CourseID
+order by 3 desc
+
+#Number of applications in a specified date range
+select count(*) as 'Number of Applications'
+from uni.application
+where CourseAppliedFor = 11
+and DateOfApplication between '2020-03-01' and '2020-08-30';
